@@ -4,7 +4,7 @@ import (
 	"context"
 	"database/sql"
 
-	"github.com/go-playground/validator"
+	"github.com/go-playground/validator/v10"
 	"github.com/izsal/belajar-golang-restfull-api/helper"
 	"github.com/izsal/belajar-golang-restfull-api/model/domain"
 	"github.com/izsal/belajar-golang-restfull-api/model/web"
