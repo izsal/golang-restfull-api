@@ -20,13 +20,13 @@ func (repository *CategoryRepositoryImpl) Save(ctx context.Context, tx *sql.Tx, 
 	id, err := result.LastInsertId()
 	helper.PanicIfError(err)
 
-	category.ID = int(id)
+	category.Id = int(id)
 	return category
 }
 
 func (repository *CategoryRepositoryImpl) Update(ctx context.Context, tx *sql.Tx, category domain.Category) domain.Category {
 	SQL := "update category set name = ? where id = ?"
-	_, err := tx.ExecContext(ctx, SQL, category.Name, category.ID)
+	_, err := tx.ExecContext(ctx, SQL, category.Name, category.Id)
 	helper.PanicIfError(err)
 
 	return category
@@ -34,7 +34,7 @@ func (repository *CategoryRepositoryImpl) Update(ctx context.Context, tx *sql.Tx
 
 func (repository *CategoryRepositoryImpl) Delete(ctx context.Context, tx *sql.Tx, category domain.Category) {
 	SQL := "delete catagory where id = ?"
-	_, err := tx.ExecContext(ctx, SQL, category.ID)
+	_, err := tx.ExecContext(ctx, SQL, category.Id)
 	helper.PanicIfError(err)
 
 }
@@ -46,7 +46,7 @@ func (repository *CategoryRepositoryImpl) FindById(ctx context.Context, tx *sql.
 
 	category := domain.Category{}
 	if rows.Next() {
-		err := rows.Scan(&category.ID, &category.Name)
+		err := rows.Scan(&category.Id, &category.Name)
 		helper.PanicIfError(err)
 		return category, nil
 	} else {
@@ -62,7 +62,7 @@ func (repository *CategoryRepositoryImpl) FindAll(ctx context.Context, tx *sql.T
 	var categories []domain.Category
 	for rows.Next() {
 		category := domain.Category{}
-		err := rows.Scan(&category.ID, &category.Name)
+		err := rows.Scan(&category.Id, &category.Name)
 		helper.PanicIfError(err)
 		categories = append(categories, category)
 	}
