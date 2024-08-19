@@ -10,6 +10,7 @@ import (
 	"github.com/izsal/belajar-golang-restfull-api/controller"
 	"github.com/izsal/belajar-golang-restfull-api/exception"
 	"github.com/izsal/belajar-golang-restfull-api/helper"
+	"github.com/izsal/belajar-golang-restfull-api/middleware"
 	"github.com/izsal/belajar-golang-restfull-api/repository"
 	"github.com/izsal/belajar-golang-restfull-api/service"
 	"github.com/julienschmidt/httprouter"
@@ -35,7 +36,7 @@ func main() {
 
 	server := http.Server{
 		Addr:    "localhost:3000",
-		Handler: router,
+		Handler: middleware.NewAuthMiddleware(router),
 	}
 
 	err := server.ListenAndServe()
