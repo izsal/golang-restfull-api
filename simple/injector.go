@@ -35,8 +35,13 @@ var HelloSet = wire.NewSet(
 	wire.Bind(new(SayHello), new(*SayHelloImpl)),
 )
 
-//ini yang benar
+// ini yang benar
 func InitializedHelloService() *HelloService {
 	wire.Build(HelloSet, NewHelloService)
+	return nil
+}
+
+func InitializedFooBar() *FooBar {
+	wire.Build(NewFoo, NewBar, wire.Struct(new(FooBar), "Foo", "Bar")) // "*" for all fields
 	return nil
 }
