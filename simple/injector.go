@@ -23,3 +23,20 @@ func InitializedFooBarService() *FooBarService {
 	wire.Build(fooSet, barSet, NewFooBarService)
 	return nil
 }
+
+// ini salah
+// func InitializedHelloService() *HelloService {
+// 	wire.Build(NewSayHelloImpl, NewHelloService)
+// 	return nil
+// }
+
+var HelloSet = wire.NewSet(
+	NewSayHelloImpl,
+	wire.Bind(new(SayHello), new(*SayHelloImpl)),
+)
+
+//ini yang benar
+func InitializedHelloService() *HelloService {
+	wire.Build(HelloSet, NewHelloService)
+	return nil
+}
