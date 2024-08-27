@@ -12,7 +12,7 @@
 
 ```bash
 # Clone this project
-$ git clone https://github.com/{{YOUR_GITHUB_USERNAME}}/belajar-golang-restfull-api
+$ git clone https://github.com/izsal/belajar-golang-restfull-api
 
 # Access
 $ cd belajar-golang-restfull-api
