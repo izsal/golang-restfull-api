@@ -22,7 +22,7 @@ import (
 	"github.com/izsal/belajar-golang-restfull-api/model/domain"
 	"github.com/izsal/belajar-golang-restfull-api/repository"
 	"github.com/izsal/belajar-golang-restfull-api/service"
-	"gopkg.in/go-playground/assert.v1"
+	"github.com/stretchr/testify/assert"
 )
 
 // SetupTestDB sets up a test database connection.
